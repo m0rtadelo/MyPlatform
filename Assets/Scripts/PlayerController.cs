@@ -59,7 +59,6 @@ public class PlayerController : MonoBehaviour
 
     public void Die() {
         Instantiate(deathParticles, this.transform.position, Quaternion.identity);
-        // deathParticles.GetComponent<ParticleSystem>().Play();
         Destroy(this.gameObject);
     }
 
