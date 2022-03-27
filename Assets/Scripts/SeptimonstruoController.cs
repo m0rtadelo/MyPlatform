@@ -20,6 +20,13 @@ public class SeptimonstruoController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.tag.Equals("MonsterKiller")) {
+            other.GetComponentInParent<PlayerController>().Bounce();
+            Destroy(this.gameObject);
+        }
+    }
+
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();

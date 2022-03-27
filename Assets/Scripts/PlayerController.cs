@@ -51,13 +51,16 @@ public class PlayerController : MonoBehaviour
             rb.velocity = newVelocity;
             sr.flipX = true;
         } else {
-            rb.AddForce(Vector2.left * rb.velocity.x, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.left * (rb.velocity.x * 5), ForceMode2D.Impulse);
         }
         if (jump && Grounded) {
             rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
         } 
     }
 
+    public void Bounce() {
+        rb.AddForce(Vector2.up * 300, ForceMode2D.Impulse);
+    }
     public void Die() {
         Instantiate(deathParticles, this.transform.position, Quaternion.identity);
         StartCoroutine(Wait3());
