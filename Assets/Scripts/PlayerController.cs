@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         } else {
             rb.AddForce(Vector2.left * rb.velocity.x, ForceMode2D.Impulse);
         }
-        if (jump) {
+        if (jump && Grounded) {
             rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
         } 
     }
@@ -70,5 +70,9 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionExit2D(Collision2D other) {
         Debug.Log("Exit " + other.gameObject.name);
         Grounded = false;
+    }
+
+    private void OnCollisionStay2D(Collision2D other) {
+        Grounded = true;
     }
 }
