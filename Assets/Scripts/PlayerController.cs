@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer sr;
     private Rigidbody2D rb;
     private Animator animator;
-    private bool Grounded = false;
+    public bool Grounded = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,20 +60,14 @@ public class PlayerController : MonoBehaviour
 
     public void Die() {
         Instantiate(deathParticles, this.transform.position, Quaternion.identity);
-        Destroy(this.gameObject);
+        StartCoroutine(Wait3());
+        sr.enabled = false;
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        Debug.Log("Enter " + other.gameObject.name);
-        Grounded = true;
-    }
+  IEnumerator Wait3()
+  {
+    yield return new WaitForSeconds(3);
+    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+  }
 
-    private void OnCollisionExit2D(Collision2D other) {
-        Debug.Log("Exit " + other.gameObject.name);
-        Grounded = false;
-    }
-
-    private void OnCollisionStay2D(Collision2D other) {
-        Grounded = true;
-    }
 }

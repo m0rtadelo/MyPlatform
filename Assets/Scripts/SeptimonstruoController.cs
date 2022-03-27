@@ -15,10 +15,7 @@ public class SeptimonstruoController : MonoBehaviour
     private Rigidbody2D rb;
 
     private void OnCollisionEnter2D(Collision2D other) {
-        PlayerController player = other.gameObject.GetComponent<PlayerController>();
-        if (player) {
-            player.Die();
-        } else if (other.gameObject.tag.Equals("MonsterLimit")) {
+        if (other.gameObject.tag.Equals("MonsterLimit")) {
             direction = direction * -1;
         }
     }
