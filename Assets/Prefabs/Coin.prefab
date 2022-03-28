@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 5164449088497194859, guid: d458f1ff6237fc843821b0dbc66845e8, type: 3}
+  Sound: {fileID: 2217459638000216895, guid: 914626028e0d7195d960d299b9b5d41e, type: 3}
 --- !u!61 &7217584291794505775
 BoxCollider2D:
   m_ObjectHideFlags: 0

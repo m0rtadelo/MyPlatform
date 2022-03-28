@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer sr;
     private Rigidbody2D rb;
     private Animator animator;
+    private SoundController sc;
     public bool Grounded = false;
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        sc = GameObject.Find("Game").GetComponent<SoundController>();
     }
 
     // Update is called once per frame
@@ -62,6 +64,7 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(Vector2.up * 300, ForceMode2D.Impulse);
     }
     public void Die() {
+        sc.PlayPlayerDeath(this.transform.position);
         Instantiate(deathParticles, this.transform.position, Quaternion.identity);
         StartCoroutine(Wait3());
         sr.enabled = false;

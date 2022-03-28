@@ -15,6 +15,7 @@ public class SeptimonstruoController : MonoBehaviour
 
     private SpriteRenderer sr;
     private Rigidbody2D rb;
+    private GameObject Game;
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.tag.Equals("MonsterLimit")) {
@@ -24,6 +25,7 @@ public class SeptimonstruoController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag.Equals("MonsterKiller")) {
+            Game.GetComponent<GameController>().AddPoints(10);
             other.GetComponentInParent<PlayerController>().Bounce();
             Instantiate(prefab, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
@@ -34,6 +36,7 @@ public class SeptimonstruoController : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        Game = GameObject.Find("Game");
     }
     private void Update()
     {
