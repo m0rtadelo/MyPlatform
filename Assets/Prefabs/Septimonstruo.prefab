@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 169321037604015377}
   - component: {fileID: -3518367125825345473}
   - component: {fileID: 701563363378410694}
+  - component: {fileID: 564920945508046539}
   m_Layer: 7
   m_Name: Septimonstruo
   m_TagString: Untagged
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 068f10aba39113197b9f799d1089a7df, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aa3c43cf8fb2aaa4fa6bc9b31ff32406, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,7 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: -1
   Speed: 6
-  Velocity: 2
+  Velocity: 1
+  prefab: {fileID: 2221554808446085147, guid: 4dd1fac077cd9b64c8a3eb013f031740, type: 3}
 --- !u!50 &169321037604015377
 Rigidbody2D:
   serializedVersion: 4
@@ -135,8 +137,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.13755411, y: 0.014108121}
-  m_Size: {x: 0.7815584, y: 1.4251171}
+  m_Offset: {x: 0.03821063, y: -0.19263375}
+  m_Size: {x: 0.75470877, y: 1.4412267}
   m_Direction: 0
 --- !u!114 &701563363378410694
 MonoBehaviour:
@@ -150,3 +152,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef5426235810403428d5652fb597fad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &564920945508046539
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812874274920315763}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b3478edd27b1ec143866464a3fa4d155, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

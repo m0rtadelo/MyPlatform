@@ -10,6 +10,8 @@ public class SeptimonstruoController : MonoBehaviour
     private float Speed = 4;
     [SerializeField]
     private float Velocity = 2;
+    [SerializeField]
+    GameObject prefab;
 
     private SpriteRenderer sr;
     private Rigidbody2D rb;
@@ -23,6 +25,7 @@ public class SeptimonstruoController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag.Equals("MonsterKiller")) {
             other.GetComponentInParent<PlayerController>().Bounce();
+            Instantiate(prefab, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }
@@ -39,12 +42,12 @@ public class SeptimonstruoController : MonoBehaviour
             newVelocity.x = Velocity;
             //rb.AddForce(Vector2.right * Speed * Time.deltaTime, ForceMode2D.Impulse);
             rb.velocity = newVelocity;
-            sr.flipX = true;
+            sr.flipX = false;
         } else if (direction < 0) {
             newVelocity.x = Velocity * -1;
             //rb.AddForce(Vector2.left * Speed * Time.deltaTime, ForceMode2D.Impulse);
             rb.velocity = newVelocity;
-            sr.flipX = false;
+            sr.flipX = true;
         }
     }
 }
