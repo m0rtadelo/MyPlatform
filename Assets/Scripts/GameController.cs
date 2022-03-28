@@ -19,17 +19,8 @@ public class GameController : MonoBehaviour
     public void RestartLevel() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    // Start is called before the first frame update
     void Start()
     {
         TextPoints = go.GetComponent<Text>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
 }

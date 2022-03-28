@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private SoundController sc;
+    private GameController gc;
     public bool Grounded = false;
     // Start is called before the first frame update
     void Start()
@@ -26,13 +25,21 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        sc = GameObject.Find("Game").GetComponent<SoundController>();
+        GameObject Game = GameObject.Find("Game");
+        sc = Game.GetComponent<SoundController>();
+        gc = Game.GetComponent<GameController>();
     }
 
     // Update is called once per frame
     void Update()
     {
         float x = Input.GetAxisRaw("Horizontal");
+        // bool right = Input.GetButtonDown(KeyCode.Joystick1Button0);
+        // bool left = Input.GetKeyDown(KeyCode.A);
+        // if (left) 
+        //     x = -1;
+        // if (right)
+        //     x = 1;
         bool jump = Input.GetButtonDown("Jump");
         float movementY = rb.velocity.y;
         if (movementY > 0.2 || movementY < -0.2) {
@@ -60,6 +67,9 @@ public class PlayerController : MonoBehaviour
         } 
     }
 
+    /// <summary>
+    /// Add bounce to player
+    /// </summary>
     public void Bounce() {
         rb.AddForce(Vector2.up * 300, ForceMode2D.Impulse);
     }
@@ -73,7 +83,7 @@ public class PlayerController : MonoBehaviour
   IEnumerator Wait3()
   {
     yield return new WaitForSeconds(3);
-    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    gc.RestartLevel();
   }
 
 }
