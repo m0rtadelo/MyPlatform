@@ -19,12 +19,23 @@ public class GameController : MonoBehaviour
     public void RestartLevel() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void GoToMainMenu() {
+        SceneManager.LoadScene(0);
+    }
+
     void Start()
     {
         TextPoints = go.GetComponent<Text>();
         GameObject[] list = GameObject.FindGameObjectsWithTag("Monster");
         foreach(GameObject item in list) {
             item.SetActive(SceneController.HasEnemies);
+        }
+    }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            GoToMainMenu();
         }
     }
 }

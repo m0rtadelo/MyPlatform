@@ -16,4 +16,8 @@ public class SceneController : MonoBehaviour
     public void setEnemies() {
         SceneController.HasEnemies = toggleEnemies.isOn;
     }
+
+    private void Start() {
+        toggleEnemies.isOn = SceneController.HasEnemies;
+    }
 }
