@@ -45428,6 +45428,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8553059175626690148, guid: 7c591060d55fbb241bbc752a86adb0bc, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5325341239381587267, guid: 79027e9f9ca71290ca135e7a2ac1f2d5, type: 3}
     - target: {fileID: 8553059175626690150, guid: 7c591060d55fbb241bbc752a86adb0bc, type: 3}
       propertyPath: m_LinearDrag
       value: 0

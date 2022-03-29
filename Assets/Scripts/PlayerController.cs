@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private SoundController sc;
     private GameController gc;
+    private bool shouldDie = false;
     public bool Grounded = false;
     // Start is called before the first frame update
     void Start()
@@ -65,6 +66,12 @@ public class PlayerController : MonoBehaviour
         if (jump && Grounded) {
             rb.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
         } 
+        if (Grounded && shouldDie)
+            Die();
+        if (movementY < -14 && sr.enabled){
+            shouldDie = true;
+            animator.SetTrigger("Falling");
+        }
     }
 
     /// <summary>
@@ -74,10 +81,11 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(Vector2.up * 300, ForceMode2D.Impulse);
     }
     public void Die() {
+        shouldDie = false;
+        sr.enabled = false;
         sc.PlayPlayerDeath(this.transform.position);
         Instantiate(deathParticles, this.transform.position, Quaternion.identity);
         StartCoroutine(Wait3());
-        sr.enabled = false;
     }
 
   IEnumerator Wait3()
