@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MonsterLimit
   - MonsterKiller
+  - Monster
   layers:
   - Default
   - TransparentFX

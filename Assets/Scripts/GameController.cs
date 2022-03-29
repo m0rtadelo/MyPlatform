@@ -22,5 +22,9 @@ public class GameController : MonoBehaviour
     void Start()
     {
         TextPoints = go.GetComponent<Text>();
+        GameObject[] list = GameObject.FindGameObjectsWithTag("Monster");
+        foreach(GameObject item in list) {
+            item.SetActive(SceneController.HasEnemies);
+        }
     }
 }
