@@ -10,12 +10,12 @@ public class FlagController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.tag.Equals("Player")) {
             LevelCompleted.SetActive(true);
-            StartCoroutine(RestartLevel());
+            StartCoroutine(NextLevel());
         }
     }
-    IEnumerator RestartLevel() {
+    IEnumerator NextLevel() {
         yield return new WaitForSeconds(5);
-        gc.RestartLevel();
+        gc.nextLevel();
     }
 
     private void Start() {
